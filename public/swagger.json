@@ -1,0 +1,279 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"PipelineStatus": {
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"type",
+					"label",
+					"id"
+				],
+				"type": "object"
+			},
+			"Pipeline": {
+				"properties": {
+					"dateUpdated": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"dateCreated": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdBy": {
+						"type": "string"
+					},
+					"updatedBy": {
+						"type": "string"
+					},
+					"statuses": {
+						"items": {
+							"$ref": "#/components/schemas/PipelineStatus"
+						},
+						"type": "array"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"dateUpdated",
+					"dateCreated",
+					"createdBy",
+					"updatedBy",
+					"statuses",
+					"organizationId",
+					"name",
+					"id"
+				],
+				"type": "object"
+			},
+			"DataResponse_Pipeline_": {
+				"properties": {
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/Pipeline"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"total",
+					"items"
+				],
+				"type": "object"
+			},
+			"Opportunity": {
+				"properties": {
+					"dateUpdated": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"dateCreated": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedBy": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdBy": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"contactId": {
+						"type": "string"
+					},
+					"statusId": {
+						"type": "string"
+					},
+					"note": {
+						"type": "string"
+					},
+					"annualizedExpectedValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"annualizedValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"expectedValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"valueCurrency": {
+						"type": "string"
+					},
+					"valueFormatted": {
+						"type": "string"
+					},
+					"valuePeriod": {
+						"type": "string"
+					},
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"confidence": {
+						"type": "number",
+						"format": "double"
+					},
+					"dateWon": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"leadId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"dateUpdated",
+					"dateCreated",
+					"userId",
+					"statusId",
+					"note",
+					"annualizedExpectedValue",
+					"annualizedValue",
+					"expectedValue",
+					"valueCurrency",
+					"valueFormatted",
+					"valuePeriod",
+					"value",
+					"confidence",
+					"leadId",
+					"organizationId",
+					"id"
+				],
+				"type": "object"
+			},
+			"DataResponse_Opportunity_": {
+				"properties": {
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/Opportunity"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"total",
+					"items"
+				],
+				"type": "object"
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "osh",
+		"version": "0.0.1",
+		"description": "OSH test challange",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Andrei Pavalachi ",
+			"email": "andrei.pavalachi@hotmail.com"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/pipelines": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DataResponse_Pipeline_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Pipelines"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/opportunities": {
+			"get": {
+				"operationId": "GetFiltered",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DataResponse_Opportunity_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Opportunities"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pipelineId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
