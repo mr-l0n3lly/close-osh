@@ -1,5 +1,5 @@
-import { DataResponse, IOpportunitiesController, Opportunity, Pipeline } from '../types';
-import { Get, Path, Query, Route, Tags } from 'tsoa';
+import { DataResponse, IOpportunitiesController, Opportunity } from '../types';
+import { Get, Query, Route, Tags } from 'tsoa';
 import { opportunitiesService } from '../services';
 
 @Route('opportunities')
@@ -10,7 +10,3 @@ export class OpportunitiesController implements IOpportunitiesController {
     return opportunitiesService.getByPipelineId(pipelineId);
   }
 }
-
-const opportunitiesController = new OpportunitiesController();
-
-export { opportunitiesController }

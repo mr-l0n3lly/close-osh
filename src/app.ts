@@ -1,7 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
-import { pipesRouter } from './routes/pipes';
 import * as path from 'path';
 
 // @ts-ignore

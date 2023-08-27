@@ -17,6 +17,7 @@ CACHE_DURATION=
 ```
 
 Using docker:
+! docker method is not working currently because of tsoa, ill try to fix it in a short time
 ```shell
 docker build . -t close-osh && \
 docker run -d -p80:3000 close-osh

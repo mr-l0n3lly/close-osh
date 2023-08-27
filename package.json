@@ -9,7 +9,7 @@
     "predev": "npm run swagger",
     "build": "tsc",
     "start": "node dist",
-    "start:dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "swagger": "tsoa spec-and-routes"
   },
   "author": "Andrei Pavalachi <andrei.pavalachi@hotmail.com>",

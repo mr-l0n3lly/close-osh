@@ -11,7 +11,3 @@ export class PipesController implements IPipesController {
     return await pipesService.getPipes()
   }
 }
-
-const pipeController = new PipesController();
-
-export { pipeController }
